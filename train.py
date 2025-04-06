@@ -1,6 +1,6 @@
 from utils import save_logs, get_data, save_img, plot_image
 from unet import UNet
-from ddpm import GaussianDiffusion
+from ddpm import Diffusion
 from ema import EMA
 
 import torch
@@ -23,7 +23,7 @@ def train(args):
     model = UNet().to(device)
     mse = nn.MSELoss()
     optimizer = optim.AdamW(model.parameters(), lr=args.lr)
-    diffusion = GaussianDiffusion(image_size=args.img_size, device=device)
+    diffusion = Diffusion(image_size=args.img_size, device=device)
     logger = SummaryWriter(os.path.join("runs", args.run_name))
     size = len(dataloader)
     ema = EMA(beta=0.99)
