@@ -1,7 +1,7 @@
 import torch
 from torch import nn
 
-class GaussianDiffusion:
+class Diffusion:
     def __init__(self, noise_steps=1000, st_beta=1e-4, end_beta=0.02, image_size=64, device='cpu'):
         
         self.noise_steps = noise_steps
